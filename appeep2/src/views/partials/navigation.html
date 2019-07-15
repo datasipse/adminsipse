@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+
+<nav id="nav" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+
+    <button id="openNav" class="w3-button  w3-small w3-amber" onclick="w3_open()">&#9776;</button>
+    <a class="navbar-brand" href="#">SIPSE - <%=title%></a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item " id="root"></li>
+            <li class="nav-fill active">
+                <a class="nav-link" id="hola"></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/helpme">Ayuda</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <hr>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="buton" id="logout">Salir</button>
+        </form>
+    </div>
+</nav>
+
+<div class="w3-sidebar w3-bar-block w3-card  w3-bar-block " style="width:20%"  id="mySidebar">
+    <button class="w3-bar-item  w3-button btn-secondary w3-large" onclick="w3_close()"><i class="material-icons  orange600"> backspace</i>&nbsp;&nbsp;&nbsp;Cerrar</button>
+    <!--opciones del menu nav bar side-->
+     <!--***lineas***-->
+     <a href="/menu" class="w3-bar-item  w3-button"><i class="material-icons blue300">home</i> <b>Home</b></a>
+    <a href="/lineas" class="w3-bar-item w3-button"><i class="material-icons blue300">note_add</i> Líneas</a>
+    
+    <!--**estrategia****-->
+    <div class="w3-bar-item w3-button" onclick="myAccFunc()" ><i class="material-icons blue300">assignment</i> Estrategias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons">expand_more</i></div>
+    <div id="demoAcc" class="w3-hide w3-white w3-card-4">
+        <a href="/lineas/CargaQueryLinea" method="GET" class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons orange600">playlist_add</i> Crear Estrategias</a>
+        <a href="/listestrategias/QueryEstrategias" method="GET" class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons orange600">list</i>Listado de Estrategias</a>
+    </div>
+ 
+    <!--***proceso***-->
+    <div class="w3-bar-item w3-button" onclick="myAccFunc2()"><i class="material-icons blue300">account_balance_wallet</i> Procesos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons">expand_more</i></div>
+    <div id="demoAcc2" class="w3-hide w3-white w3-card-4">
+        <a href="/estrategia/CargaQueryEstategia"  class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add</i> Crear Proceso</a>
+        <a href="/procesos/QueryProcesos" class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add_check</i>Listado de Procesos</a>
+    </div>
+
+       <!--***Acciones***-->
+       <div class="w3-bar-item w3-button" onclick="myAccFunc3()"><i class="material-icons blue300">receipt</i> Acciones Generales&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons">expand_more</i></div>
+         <div id="demoAcc3" class="w3-hide w3-white w3-card-4">
+           <a href="/procesos/CargaQueryProcesos"  class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add</i> Crear Acción</a>
+           <a href="/acciones/QueryAcciones" class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add_check</i>Listado de Acciones</a>
+       </div>
+
+   <!--***Especificas***-->
+   <div class="w3-bar-item w3-button" onclick="myAccFunc4()"><i class="material-icons blue300">view_agenda</i> Acciones Específicas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons">expand_more</i></div>
+   <div id="demoAcc4" class="w3-hide w3-white w3-card-4">
+       <a href="/acciones/CargaQueryAcciones"  class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add</i> Crear Acción Específicas</a>
+       <a href="/especifica/QueryEspecifica" class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add_check</i>Listado de Acciones Específicas</a>
+   </div>
+
+     <!--***Temas***-->
+     <div class="w3-bar-item w3-button" onclick="myAccFunc5()"><i class="material-icons blue300">extension</i> Temas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons">expand_more</i></div>
+     <div id="demoAcc5" class="w3-hide w3-white w3-card-4">
+         <a href="/acciones/CargaQueryEspecifica"  class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add</i> Crear Tema</a>
+         <a href="" class="w3-bar-item w3-button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons blue300">playlist_add_check</i>Listado de Temas</a>
+     </div>
+  
+    <!--***última**-->
+    <div class="w3-dropdown-click">
+            <div class="w3-bar-item w3-button" onclick="myDropFunc()">
+                <i class="material-icons blue300">note_add</i> Complementos </div>
+            <div id="demoDrop" class="w3-dropdown-content w3-white w3-card-4">
+                <a href=""  class="w3-bar-item w3-button"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crear Estrategias</a>
+                <a href="#" class="w3-bar-item w3-button"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Listado de Estrategias</a>
+            </div>
+        </div>
+  
+</div>
+
+
+<script>
+    function w3_open() {
+        document.getElementById("main").style.marginLeft = "22%";
+        document.getElementById("mySidebar").style.width = "22%";
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("openNav").style.display = 'none';
+    }
+
+    function w3_close() {
+        document.getElementById("main").style.marginLeft = "0%";
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("openNav").style.display = "inline-block";
+    }
+</script>
+          
+<script>
+      function myAccFunc() {
+          var x = document.getElementById("demoAcc");
+          if (x.className.indexOf("w3-show") == -1) {
+              x.className += " w3-show";
+              x.previousElementSibling.className += " w3-green";
+          } else {
+              x.className = x.className.replace(" w3-show", "");
+              x.previousElementSibling.className =
+                  x.previousElementSibling.className.replace(" w3-green", "");
+          }
+         
+      }
+    function myAccFunc2(){
+        var y = document.getElementById("demoAcc2");
+            if (y.className.indexOf("w3-show") == -1) {
+                y.className += " w3-show";
+                y.previousElementSibling.className += " w3-green";
+            } else {
+                y.className = y.className.replace(" w3-show", "");
+                y.previousElementSibling.className =
+                y.previousElementSibling.className.replace(" w3-green", "");
+            }
+    }
+    function myAccFunc3(){
+        var y = document.getElementById("demoAcc3");
+            if (y.className.indexOf("w3-show") == -1) {
+                y.className += " w3-show";
+                y.previousElementSibling.className += " w3-green";
+            } else {
+                y.className = y.className.replace(" w3-show", "");
+                y.previousElementSibling.className =
+                y.previousElementSibling.className.replace(" w3-green", "");
+            }
+    }
+    function myAccFunc4(){
+        var y = document.getElementById("demoAcc4");
+            if (y.className.indexOf("w3-show") == -1) {
+                y.className += " w3-show";
+                y.previousElementSibling.className += " w3-green";
+            } else {
+                y.className = y.className.replace(" w3-show", "");
+                y.previousElementSibling.className =
+                y.previousElementSibling.className.replace(" w3-green", "");
+            }
+    }
+    function myAccFunc5(){
+        var y = document.getElementById("demoAcc5");
+            if (y.className.indexOf("w3-show") == -1) {
+                y.className += " w3-show";
+                y.previousElementSibling.className += " w3-green";
+            } else {
+                y.className = y.className.replace(" w3-show", "");
+                y.previousElementSibling.className =
+                y.previousElementSibling.className.replace(" w3-green", "");
+            }
+    }
+      function myDropFunc() {
+          var x = document.getElementById("demoDrop");
+          if (x.className.indexOf("w3-show") == -1) {
+              x.className += " w3-show";
+              x.previousElementSibling.className += " w3-green";
+          } else {
+              x.className = x.className.replace(" w3-show", "");
+              x.previousElementSibling.className =
+                  x.previousElementSibling.className.replace(" w3-green", "");
+          }
+      }
+</script>

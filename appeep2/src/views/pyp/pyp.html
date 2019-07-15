@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<% include ../partials/head.html %>
+<% include ../partials/navigation.html %>
+    <body onload="controlGate()" class="is-preload">
+        <center>
+            <header>
+                <h1>Plan operativo</h1>
+                <p>Acciones de promoción y prevención</p>
+            </header>
+            <h3 id="hola2"></h3>
+        </center>
+        <form action="" method="post">
+            <% include ../partials/datos.html %>
+            <% include ../partials/ie.html %>
+
+            <div class="container">
+                <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <section class="box">
+                            <h4>Seleccione la fecha y duración de la actividad</h4>
+                            <p>Por favor no ingrese los datos manualmente, utilice el calendario.</p>
+                            <form action="/acciones-pyp/lineas" method="post">
+                             <div class="row gtr-uniform gtr-50">
+                                <div class="col-3 col-12-mobilep">
+                                    <select id='tipoFormato'>
+                                        <!--query base de datos tabla almacen info plus-->
+                                    </select>
+                                    <small id="helpId" class="form-text text-muted">Tener en cuenta el tipo de formato
+                                        el cual
+                                        esta enumerando</small>
+                                </div>
+                                <div class="col-3 col-12-mobilep">
+                                    <input type="number" class="form-control" min="0" name="" id="consecutivo"
+                                        aria-describedby="helpId" placeholder="Número consecutivo ">
+                                    <small id="helpId" class="form-text text-muted">Este es el último número Ingresado,
+                                        tenga en cuenta cambiarla de acuerdo a la actividad que se está ingresando
+                                    </small>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input type='text' class="form-control" id="fecha" placeholder="Fecha Acción"
+                                            required />
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <div class='input-group date' id='datetimepicker2'>
+                                        <input type='text' class="form-control" id="horaI" placeholder="Hora Inicial"
+                                            required />
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <div class='input-group date' id='datetimepicker3'>
+                                        <input type='text' class="form-control" id="horaF" placeholder="Hora final"
+                                            required />
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                    <select onchange="next()" name="grado" id="grado">
+                                        <option value="0">- Grado -</option>
+                                        <!--query base de datos tabla almacen info plus-->
+                                    </select>
+                                </div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep">
+                                
+                                        <button type="submit" class="btn btn-info btn-block">Seguir</button>
+                                </div>
+                            </div>
+                            </form>
+                            
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <section class="box">
+                            <h4>Seleccione la Línea Operativa</h4>
+                            <p>Teniendo en cuenta su Plan Operativo reporte.</p>
+                            <div class="row gtr-uniform gtr-50">
+                                <div class="col-12 col-12-mobilep">
+                                        <select id='linea'  onchange='cargarEstrategia(this.value);'>
+                                                <option value="0">- Línea -</option>
+                                                <option value='1'>Construyo Convivencia</option>
+                                                <option value='2'>Mi Cuerpo Territorio de Vida</option>
+                                                <option value='3'>Familia en la Escuela</option>
+                                            </select>
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                        <select id='estrategia' onchange='estrategia_seleccionada(this.value);' disabled>
+                                                <option value="0">- Estrategia -</option>
+                                            </select>
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                        <select id='proceso'  onchange='cargarEstrategia(this.value);'>
+                                                <option value="0">- Proceso -</option>
+                                            
+                                            </select>
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                   <select id='generales' onchange='generales_seleccionado(this.value);' disabled>
+                                        <option value="0">- Generales -</option>
+                                    </select>
+                                  
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                        <select id='especifica' onchange='especifica_seleccionado(this.value);' disabled>
+                                                <option value="0">- Acciones específicas -</option>
+                                            </select>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <span class="label label-primary">Tema1 (*)</span>
+                                    <select name="tema1" id="tema1" onchange="next2()" disabled required>
+                                        <option value="0">- Selecciona el tema -</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <span class="label label-primary">Tema 2</span>
+                                    <select name="tema2" id="tema2" onchange="controltemas()" disabled>
+                                        <option value="0">- Selecciona el tema -</option>
+                                    </select>
+                                </div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep">
+                                    <button type="submit" class="btn btn-info btn-block">Seguir</button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <section class="box">
+                            <h4>Otros datos de la acción realizada</h4>
+                            <p></p>
+                            <div class="row gtr-uniform gtr-50">
+                                <div class="col-12 col-12-mobilep">
+                                    <select  name="articulacion" id="articulacion" onchange="otraEntidad(this.value)" disabled>
+                                        <option value="0">- Seleccione la Entidad -</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                    <span class="label label-primary">Otra Entidad</span>
+                                    <input type="text" name="entidadOtra" id="entidadOtra" disabled placeholder="Escriba la entidad">
+                                     
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                        <select  name="tecnica" id="tecnica">
+                                                <option value="0">- Seleccione la técnica -</option>
+                                        </select>
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                    <header>
+                                        <h5><b>Profesionales que apoyan</b></h5>
+                                        <p>Otros profesionales diferentes a usted, que apoyarón la realización de la
+                                            actividad <b>(*)[coloque cero sí no hay dato]</b></p>
+                                    </header>
+                                  
+                                        <div class="col-6 col-12-mobilep">
+                                            <input type="number" id="psicologo" min="0" onchange="apoyos();"
+                                                placeholder="Número de Id del Psicólogo">
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <label id="nombrepsicologo"></label>
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <input type="number" id="lidergestion" min="0" onchange="apoyos();"
+                                                placeholder="Número de Id Líder de Gestíon">
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <label id="nombrelidergestion"></label>
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <input type="number" id="liderzonal" min="0" onchange="apoyos();"
+                                                placeholder="Número de Id Líder Zonal">
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <label id="nombreliderzonal"></label>
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <input type="number" id="artista" min="0" onchange="apoyos();"
+                                                placeholder="Número de Id del Artista">
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <label id="nombreartista"></label>
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <span class="label label-default">Número de replicas de la actividad
+                                                (*)</span>
+                                            <input type="number" id="numguias" min="0" onchange="next3()"
+                                                placeholder="Número de replicas, si la actividad fueron guías">
+                                        </div>
+                                </div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep">
+                                    <button type="submit" class="btn btn-info btn-block">Seguir</button>
+                                </div>
+                            </div>
+                           
+                              
+                            </div>
+                            
+                        </section>
+                    </div>
+          
+            </div>
+
+            <div class="container">
+                <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <section class="box">
+
+                            <div class="row gtr-uniform gtr-50">
+                                <div class="col-12 col-12-mobilep">
+                                    <header>
+                                        <h4><b>Asistentes a la actividad realizada</b></h4>
+                                        <p>Todos los campos son obligatorios(*)</b></p>
+                                    </header>
+
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <span class="label label-default">Directivos/Docentes</span>
+                                    <input type="number" min="0" id="dir-docentes" onchange="controlasistentes()"
+                                        required>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <span class="label label-default">Estudiantes</span>
+                                    <input type="number" id="estudiantes" min="0" onchange="controlasistentes()"
+                                        required>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <span class="label label-default">Padres/Acudientes</span>
+                                    <input type="number" id="acudientes" min="0" onchange="controlasistentes()"
+                                        required>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <span class="label label-default">Otros participantes</span>
+                                    <input type="number" id="otros" min="0" onchange="controlasistentes()" required>
+                                </div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep"></div>
+                                <div class="col-4 col-12-mobilep">
+                                    <button type="submit" class="btn btn-info btn-block">Seguir</button>
+                                </div>
+
+
+                            </div>
+
+
+                    </div>
+
+                    </section>
+                </div>
+
+            </div>
+
+            <div class="container">
+                <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <section class="box">
+                            <div id="cuerpo5">
+                                <header>
+                                    <h3>Evidencia de la acción</h3>
+                                    <p>Cargue los archivos según la evidencia, tenga en cuenta los formatos de los
+                                        archivos y el tamaño de estos.</p>
+                                </header>
+                                <!-- asistencia-->
+                                <form action="#" method="POST">
+                                    <div class="row gtr-uniform gtr-50">
+                                        <div class="col-6 col-12-mobilep">
+                                            <div class="custom-file">
+                                                <span class="label label-default">Fotografía (Max:6Mb)</span>
+                                                <input type="file" onchange="validarExtFoto()" class=""
+                                                    id="customFileFoto"><br />
+                                            </div>
+                                            <div>
+                                                <p id="progreso"></p>
+                                            </div>
+                                            <div class="progress" id="progresoimg">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                    aria-valuemin="0" aria-valuemax="100">
+                                                    <span class="sr-only">100% Complete</span>
+                                                </div>
+                                            </div>
+                                            <div id="url"><input type="hidden" id="urlimg"></div>
+                                            <div id="visorFoto"></div>
+                                        </div>
+                                        <br>
+                                        <div class="col-6 col-12-mobilep">
+                                            <div class="custom-file">
+                                                <span class="label label-default">Acta (Max:4Mb)</span>
+                                                <input type="file" onchange="validarExtActa()" id="FileActa"><br />
+                                            </div>
+                                            <div>
+                                                <p id="progresoactatxt"></p>
+                                            </div>
+                                            <div class="progress" id="progresoacta">
+                                                <div role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                                    aria-valuemax="100">
+                                                    <span class="sr-only">100% Complete</span>
+                                                </div>
+                                            </div>
+                                            <div id="url"><input type="hidden" id="urlacta"></div>
+                                            <div id="visorActa"></div>
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <div class="custom-file">
+                                                <span class="label label-default">Listado (Max:4Mb)</span>
+                                                <input type="file" onchange="validarExtList()" id="FileListado"><br />
+                                            </div>
+                                            <div>
+                                                <p id="progresolistadotxt"></p>
+                                            </div>
+                                            <div class="progress" id="progresolistado">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                    aria-valuemin="0" aria-valuemax="100">
+                                                    <span class="sr-only">100% Complete</span>
+                                                </div>
+                                            </div>
+                                            <div id="url"><input type="hidden" id="urllistado"></div>
+                                            <div id="visorListado"></div>
+                                        </div>
+                                        <div class="col-6 col-12-mobilep">
+                                            <div class="custom-file">
+                                                <span class="label label-default">Formato grupal (Max:4Mb)</span>
+                                                <input type="file" onchange="validarExtFormato()"
+                                                    id="FileFormato"><br />
+                                            </div>
+                                            <div>
+                                                <p id="progresoformatotxt"></p>
+                                            </div>
+                                            <div class="progress" id="progresoformato">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                                    aria-valuemin="0" aria-valuemax="100">
+                                                    <span class="sr-only">100% Complete</span>
+                                                </div>
+                                            </div>
+                                            <div id="url"><input type="hidden" id="urlformato"></div>
+                                            <div id="visorFormato"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr />
+                                <!--botones del formulario-->
+                                <div class="alert alert-info">
+                                    <div class="row gtr-uniform gtr-50">
+                                        <div class="col-8 col-12-mobilep">
+                                            <strong>Atención!</strong>
+                                            <p style="  text-align: justify"> Para poder continuar con el envío de la
+                                                información debes tener en cuenta lo siguiente:<br>
+                                                <ul>
+                                                    <li>1. Revisa que todos los campos esten llenos</li>
+                                                    <li>2. Debes cargar al menos una evidencia.</li>
+                                                    <li>3. Debes esperar que tu evidencia se cargue y visualice
+                                                        totalmente, para confirmarlo el botón de carga de archivos se
+                                                        ocultará.</li>
+                                                </ul>
+                                                <p><b><em>Cuando cumplas con todo lo anterior podrás avanzar en el envío
+                                                            de la información.</em></b></p>
+                                        </div>
+                                        <div class="col-4 col-12-mobilep">
+                                            <center> <input type="button" style="width:100%" id="showtable"
+                                                    onclick="showbtnguardar()" value="He revisado" /> </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                    <div class="container h-100">
+                        <div class="row h-100 justify-content-center align-items-center">
+                            <section class="box">
+                                    <div  id="enviarplanoperativo">
+                                            <div class="alert alert-info">
+                                               <div class="row gtr-uniform gtr-50">
+                                                    <div class="col-12 col-12-mobilep">
+                                                       <strong>Aviso Legal!</strong> <p style="  text-align: justify">Acepto que la información que estoy suministrando fue previamente revisada
+                                                       (información, datos y variables seleccionadas). Recuerde sólo usted es el responsable de la calidad de la información enviada.
+                                                       Por tal motivo le pedimos amablemente que vuevla a revisar la información antes de enviarla, si a pesar de esto usted envia reportes
+                                                       errados se le borraran automaticamente y deberá ingresarlas nuevamente.</p>
+                                                   </div>	
+                                                   <div class="col-12 col-12-mobilep">
+                                                       <center>  <input type="button" class="span6" style="width:100%" id="savePO" onclick="savePO()" value="Guardar Reporte" data-toggle="modal" data-target=".bd-example-modal-sm"/>  </center>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                            </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+        </form>
+        <% include ../partials/scriptsCall.html %>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
+
+    </body>
+</html>

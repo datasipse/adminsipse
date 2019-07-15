@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include partials/head.html %>
+<% include partials/navigation.html %>
+
+<body onload="controlGate()" class="is-preload">
+    <div class="class container">
+        <br>
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <section id="datosEstudiantes" class="box">
+                    <div class="col-12 col-12-mobilep">
+                        <header>
+                            <h3>Requerimiento</h3>
+                            <p>Formulario para la solicitud puntual de algún proceso con la Plataforma SIPSE</p>
+                        </header>
+                    </div>
+                    <div class="row gtr-uniform gtr-50">
+                        <div class="col-12 col-12-mobilep">
+                            <form action="/helpme/add" method="post">
+                                <div class="row gtr-uniform gtr-50">
+                                    <div class="col-12 col-12-mobilep">
+                                        <span class="label label-primary">Nombre del profesional</span>
+                                    </div>
+                                    <div class="col-3 col-12-mobilep">
+                                        <input type="text" class="form-control" name="nombre1" id="nombre1"
+                                            placeholder="Nombre 1" required />
+                                    </div>
+                                    <div class="col-3 col-12-mobilep">
+                                        <input type="text" class="form-control" name="nombre2" id="nombre2" value=""
+                                            placeholder="Nombre 2" />
+                                    </div>
+                                    <div class="col-3 col-12-mobilep">
+                                        <input type="text" class="form-control" name="apellido1" id="apellido1" value=""
+                                            placeholder="Apellido 1" required />
+                                    </div>
+                                    <div class="col-3 col-12-mobilep">
+                                        <input type="text" class="form-control" name="apellido2" id="apellido2" value=""
+                                            placeholder="Apellido 2" />
+                                    </div>
+                                </div>
+                                <br>
+                                <hr />
+                                <div class="row gtr-uniform gtr-50">
+                                    <div class="col-4 col-12-mobilep">
+                                        <span class="label label-default">Número de identificación</span>
+                                        <input type="number" class="form-control" name="idprofesional"
+                                            id="idprofesional" value="" placeholder="Id profesional" />
+                                    </div>
+                                    <div class="col-4 col-12-mobilep">
+                                        <span class="label label-default">Tipo de solicitud</span>
+                                        <select name="tipo" id="tipo">
+                                            <option value="0">-seleccoione-</option>
+                                            <option value="Revisión Reportes">Revisión reportes</option>
+                                            <option value="Borrar Reportes">Borrar reportes</option>
+                                            <option value="Problemas App">Problemas plataforma</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4 col-12-mobilep">
+                                        <span class="label label-default">Comunidad de aprendizaje</span>
+                                        <select name="comunidad" id="comunidad">
+                                            <option value="0">- Selecciona -</option>
+                                            <option value="Jorge">Jorge</option>
+                                            <option value="Carlos">Carlos</option>
+                                            <option value="Maribel">Maribel</option>
+                                            <option value="Clara">Clara</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-12-mobilep">
+                                        <span class="label label-default">Descripción</span>
+                                        <textarea name="descrequerimiento" id="descrequerimiento" cols="30"
+                                            rows="5 "></textarea>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row gtr-uniform gtr-50">
+                                    <div class="col-12 col-12-mobilep">
+                                        <button type="submit" id="validarDatos"
+                                            class="button special icon fa-search  btn-block btn-">Enviar
+                                            Requerimiento</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 col-12-mobilep">
+                            <form action="/history-requerimientos/QueryResult" method="GET">
+                                <div class="row gtr-uniform gtr-50">
+                                    <div class="col-12 col-12-mobilep">
+                                        <button type="submit" id="queryHistoryReq"
+                                            class="button  btn-info special icon fa-search  btn-block btn-">Consultar
+                                            Requerimiento</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <br>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+<% include partials/scriptsCall.html %>
+
+</html>

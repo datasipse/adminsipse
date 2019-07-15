@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include partials/head.html %>
+<% include partials/navigation.html %>
+
+
+<body onload="controlGate()">
+    <br>
+    <div id="page-wrapper" class="is-preload">
+        <br>
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <section class="box">
+                    <div class="col-12 col-12-mobilep">
+                        <header>
+                            <h3>Historial de Requerimientos realizados</h3>
+                            <p>Listados de todos los requwerimientos realizadospor usted al SIPSE</p>
+                        </header>
+                    </div>
+
+                    <div class="row gtr-uniform gtr-50">
+                        <div class="col-12 col-12-mobilep" style="overflow-x: auto">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Id Profesional</th>
+                                        <th scope="col">Primer Nombre</th>
+                                        <th scope="col">Segundo Nombre</th>
+                                        <th scope="col">Primer Apellido</th>
+                                        <th scope="col">Segundo Apellido</th>
+                                        <th scope="col">Tipo de ayuda</th>
+                                        <th scope="col">Descripción de la ayuda</th>
+                                        <th scope="col">Comunidad de Aprendizaje</th>
+                                        <th scope="col">Borrar Registro</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultados">
+                                    <%if (consultas.length){%>
+                                    <% let tam=0; %>
+                                    <% tam= consultas[0].rows.length; %>
+                                    <H1><%=tam %></H1>
+
+                                    <% for( var i=0; i< tam; i++){ %>
+                                    <tr>
+                                        <td><%=consultas[0].rows[i].id %></td>
+                                        <td><%=consultas[0].rows[i].idprofesional %></td>
+                                        <td><%=consultas[0].rows[i].nombre1 %></td>
+                                        <td><%=consultas[0].rows[i].nombre2 %></td>
+                                        <td><%=consultas[0].rows[i].apellido1 %></td>
+                                        <td><%=consultas[0].rows[i].apellido2 %></td>
+                                        <td><%=consultas[0].rows[i].tipoayuda %></td>
+                                        <td><%=consultas[0].rows[i].describepeticion %></td>
+                                        <td><%=consultas[0].rows[i].comunidad %></td>
+                                        <td>
+
+                                            <form action="/history-requerimientos/delete/<%=consultas[0].rows[i].id %>"
+                                                method="POST">
+                                                <button class="btn  btn-danger" type="submit">Borrar</button>
+
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <%  }  consultas=[];%>
+                                    <%}else{%> <p>No has reportado requerimientos</p><%}%>
+                                   </tbody>
+                                </table>
+                                <button type="button" id="backRequiere" class="btn btn-warning">Regresar</button>
+                            </div>
+                        </div>
+                        <div class="row gtr-uniform gtr-50">
+                            <div class="col-12 col-12-mobilep">
+                                <hr>
+                            </div>
+                        </div>
+                     
+                    </form>
+                    <br>
+                </section>
+            </div>
+        </div>
+    </div>
+    <% include partials/scriptsCall.html %>
+</body>
+
+
+</html>

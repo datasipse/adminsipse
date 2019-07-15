@@ -1,0 +1,33 @@
+{
+  "name": "appeep",
+  "version": "1.0.0",
+  "description": "App EEP",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src",
+    "start": "node src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datasipse/semData.git"
+  },
+  "author": "Julio Mendoza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/datasipse/semData/issues"
+  },
+  "homepage": "https://github.com/datasipse/semData#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "nodemon": "^1.19.1"
+  }
+}

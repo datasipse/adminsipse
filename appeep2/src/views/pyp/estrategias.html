@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <% include ../partials/navigation.html %>
+    <% include ../partials/head.html %>
+    <title><%=title%></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+ 
+<body onload="controlGate()" class="is-preload">
+    <div id="main">
+        <div class="class container">
+            <br>
+                <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <section id="datosEstudiantes" class="box">
+                            <header>
+                                <h4>Estrategias</h4>
+                                <p>Formulario para Creación de las <b>Estrategias</b> del plan operativo del programa
+                                    Escuela
+                                    Entorno Protector</p>
+                            </header>
+                            <div class="row gtr-uniform gtr-50">
+                                <div class="col-12 col-12-mobilep">
+                                    <form action="/estrategias/add" method="post">
+                                        <div class="row gtr-uniform gtr-50">
+                                            <div class="col-12 col-12-mobilep">
+                                                <span class="label label-primary"><b>Línea a cual pertenece la
+                                                        Estrategia</b></span>
+                                                <select name="lineaid" id="lineaid">>
+                                                    <%if (respuestaQ.length){%>
+                                                    <% let tam=0; %>
+                                                    <% tam= respuestaQ[0].rows.length; %>
+                                                    <option value=0>--Seleccione la Línea--</option>
+                                                    <% for( var i=0; i< tam; i++){ %>
+                                                    <option value="<%=respuestaQ[0].rows[i].idlinea%>">
+                                                        <%=respuestaQ[0].rows[i].nombrelinea%></option>
+                                                    <% }%>
+                                                    <%}else{%> <p> No has reportado requerimientos</p><%}%>
+                                                        </select>
+                                                   </div>
+                                            <div class="col-12 col-12-mobilep">
+                                                <span class="label label-primary"><b>Nombre de la Estrategia</b>
+                                                    (*)</span>
+                                                <input type="text" class="form-control" name="estrategia" id="estrategia"
+                                                    placeholder="Nombre de la Estrategia" required />
+                                            </div>
+                                           
+                                             <div class="col-12 col-12-mobilep">
+                                                <button type="submit" id="enviarestrategia"
+                                                    class="button special icon fa-search  btn-block btn-">Crear Estrategia Nueva
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <hr />
+                                    </form>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <form action="/estrategias/QueryResult" method="GET">
+                                        <div class="row gtr-uniform gtr-50">
+                                            <div class="col-8 col-12-mobilep">
+                                                <header>
+                                                    <h3>Estrategias Operativas</h3>
+                                                    <p>Listados de todos las estrategias del plan operativo del PEEP.</p>
+                                                </header>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-6 col-12-mobilep">
+                                    <form action="/listestrategias/QueryEstrategias" method="get">
+                                            <button type="submit" id="queryHistoryEstrategia"
+                                            class="button  btn-info special icon fa-search  btn-block btn-">Ver Estrategias
+                                        </button>
+                                    </form>
+                                </div>
+                        </section>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+           
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+          
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <% include ../partials/scriptsCall.html %>
+</body>
+</html>

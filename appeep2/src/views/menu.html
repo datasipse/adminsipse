@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<% include partials/head.html %>
+<% include partials/navigation.html %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+
+<body onload="controlGate()" class="is-preload">
+
+<div id="main">
+      <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+
+            <div class="flex flex-wrap" style="width: 60em">
+
+                <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                        <div class="bg-cover h-48" style="background-image: url(/assets/images/logoalcaldia.jpg);">
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="mb-4 text-2xl"><b>Líneas</b></h3>
+                            <div class="mb-4 text-grey-darker text-sm flex-1">
+
+                            </div>
+                            <a href="/lineas"
+                                class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide">+INGRESAR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                        <div class="bg-cover h-48" style="background-image: url(/assets/images/01.jpg);">
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="mb-4 text-2xl"><b>Estrategias</b></h3>
+                            <div class="mb-4 text-grey-darker text-sm flex-1">
+
+                            </div>
+                            <a href="/lineas/CargaQueryLinea" method="GET"
+                                class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide">+INGRESAR</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                        <div class="bg-cover h-48" style="background-image: url(/assets/images/03.jpg);"></div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="mb-4 text-2xl"><b>Procesos</b></h3>
+                            <div class="mb-4 text-grey-darker text-sm flex-1">
+
+                            </div>
+                            <a href="/procesos"
+                                class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide">+INGRESAR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                        <div class="bg-cover h-48" style="background-image: url(/assets/images/07.jpg);"></div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="mb-4 text-2xl"><b>Acciones</b></h3>
+                            <div class="mb-4 text-grey-darker text-sm flex-1">
+                            </div>
+                            <a href="/acciones"
+                                class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide">+INGRESAR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                        <div class="bg-cover h-48" style="background-image: url(/assets/images/08.jpg);"></div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="mb-4 text-2xl"><b>Acciones Específicas</b></h3>
+                            <div class="mb-4 text-grey-darker text-sm flex-1">
+                            </div>
+                            <a href="/especificas"
+                                class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide">+INGRESAR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                        <div class="bg-cover h-48" style="background-image: url(/assets/images/09.jpg);"></div>
+                        <div class="p-4 flex-1 flex flex-col">
+                            <h3 class="mb-4 text-2xl"><b>Temas</b></h3>
+                            <div class="mb-4 text-grey-darker text-sm flex-1">
+                            </div>
+                            <a href="/temas"
+                                class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide">+INGRESAR</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+  
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% include partials/scriptsCall.html %>
+</html>

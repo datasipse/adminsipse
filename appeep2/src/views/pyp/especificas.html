@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <% include ../partials/navigation.html %>
+    <% include ../partials/head.html %>
+    <title><%=title%></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+ 
+<body onload="controlGate()" class="is-preload">
+    <div id="main">
+        <div class="class container">
+            <br>
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <section id="datosEstudiantes" class="box">
+                            <header>
+                                <h4>Acciones Específicas</h4>
+                                <p>Formulario para Creación de las <b>Acciones Específicas</b> del plan operativo del programa Escuela
+                                    Entorno Protector</p>
+                            </header>
+                            <div class="row gtr-uniform gtr-50">
+                                <div class="col-12 col-12-mobilep">
+                                    <form action="/especifica/add" method="post">
+                                        <div class="row gtr-uniform gtr-50">
+                                            <div class="col-12 col-12-mobilep">
+                                                <span class="label label-primary"><b>Acción a la cual pertenece la Acción específica</b></span>
+                                                <select name="accionid" id="accionid">
+                                                    <%if (respuestaQA.length){%>
+                                                        <% let tam=0; %>
+                                                        <% tam= respuestaQA[0].rows.length; %>
+                                                        <option value=0>--Seleccione la Acción--</option>
+                                                        <% for( var i=0; i< tam; i++){ %>
+                                                        <option value="<%=respuestaQA[0].rows[i].idacciones%>">Acción: <%=respuestaQA[0].rows[i].idacciones%>-<%=respuestaQA[0].rows[i].nombreaccion%></option>
+                                                            <% }%>
+                                                            <%}else{%> <p>No has reportado procesos</p><%}%>
+                                                        </select>
+                                                   </div>
+                                            <div class="col-12 col-12-mobilep">
+                                                <span class="label label-primary"><b> Nombre de la acción específica</b>
+                                                    (*)</span>
+                                                <input type="text" class="form-control" name="especifica" id="especifica"
+                                                    placeholder="Nombre de la acción específica" required />
+                                            </div>
+                                         
+                                             <div class="col-12 col-12-mobilep">
+                                                <button type="submit" id="enviarprocesoa"class="button btn-block">Crear Acción Específica</button>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <hr />
+                                    </form>
+                                </div>
+                                <div class="col-12 col-12-mobilep">
+                                    <div class="row gtr-uniform gtr-50">
+                                        <div class="col-8 col-12-mobilep">
+                                            <header>
+                                                <h3>Acciones  Operativas</h3>
+                                                <p>Listados de todos las Acciones del plan operativo del PEEP.</p>
+                                            </header>
+                                        </div>
+                                        <div class="col-4 col-12-mobilep">
+                                            <form action="/especifica/QueryEspecifica" method="get">
+                                                <button type="submit" id="queryHistoryEspecificas"
+                                                    class="button  btn-info   btn-block"> Acciones Específicas
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-12 col-12-mobilep"><hr></div>
+                                    </div>
+                                </div>
+                    </section>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+           
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+          
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <% include ../partials/scriptsCall.html %>
+</body>
+</html>

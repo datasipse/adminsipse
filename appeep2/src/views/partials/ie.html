@@ -1,0 +1,60 @@
+<div class="class container">
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <section class="box">
+                <form action="/acciones-pyp" method="GET">
+                    <div class="row gtr-uniform gtr-50">
+                        <div class="col-12 col-12-mobilep">
+                            <header>
+                                <h3>Establecimiento Educativo</h3>
+                                <p>Selecciona la sede educativa en la cual se realizó la acción...</p>
+                                <input type="hidden" name="emailsesion" id="emailsesion">
+                            </header>
+                        </div>
+                        <div class="col-12 col-12-mobilep form-group">
+                            <label>I.E. Asignada</label>
+                            <div class="input-group">
+                                <input list="ie-asignada" class="form-control selectpicker" name="browser">
+                                <datalist id="ie-asignada">
+                                    <%if (consultas.length){%>
+                                    <% let tam=0; %>
+                                    <% tam= consultas[0].rows.length; %>
+                                    <% for( var i=0; i< tam; i++){ %>
+                                    <option value="<%=consultas[0].rows[i].nomsede%>"><%=consultas[0].rows[i].nomsede%>
+                                    </option>
+                                    <%  }  consultas=[];%>
+                                    <%}else{%> <p>No has reportado requerimientos</p><%}%>
+                                </datalist>
+                                <input type="hidden" id="institucion">
+                            </div>
+                        </div>
+                        <div class="col-3 col-12-mobilep">
+                            <label>DANE</label>
+                            <input type="text" id="coddane" value="" required disabled>
+                        </div>
+                        <div class="col-3 col-12-mobilep">
+                            <label>Consecutivo DANE</label>
+                            <input type="text" id="consecutivodane" required disabled>
+                        </div>
+                        <!--Estrategia-->
+                        <div class="col-3 col-12-mobilep">
+                            <label>Comuna</label>
+                            <input type="text" id="comuna" required disabled>
+                        </div>
+                        <div class="col-3 col-12-mobilep">
+                            <label>Núcleo</label>
+                            <input type="text" id="nucleo" required disabled>
+                        </div>
+                        <div class="col-4 col-12-mobilep"></div>
+                        <div class="col-4 col-12-mobilep"></div>
+                        <div class="col-4 col-12-mobilep">
+                            <button type="submit" class="btn btn-info btn-block">Seguir</button>
+                        </div>
+                    </div>
+                </form>
+            </section>  
+        </div>
+    </div>
+</div>   
+        
+<% include ../partials/scriptsCall.html %>

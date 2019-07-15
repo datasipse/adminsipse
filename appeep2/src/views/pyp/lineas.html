@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <% include ../partials/head.html %>
+        <% include ../partials/navigation.html %>
+    <title><%=title%></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+ 
+<body onload="controlGate()" class="is-preload">
+        <div id="main">
+         <div class="class container">
+        <br>
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <section id="datosEstudiantes" class="box">
+                    <header>
+                        <h4>Líneas</h4>
+                        <p>Formulario para Creación de las líneas del plan operativo del programa Escuela
+                            Entorno Protector</p>
+                    </header>
+                    <div class="row gtr-uniform gtr-50">
+                        <div class="col-12 col-12-mobilep">
+                            <form action="/lineas/add" method="post">
+                                <div class="row gtr-uniform gtr-50">
+                                    <div class="col-12 col-12-mobilep">
+                                        <span class="label label-primary"><b>Nombre de la línea de acción</b>
+                                            (*)</span>
+                                        <input type="text" class="form-control" name="linea" id="linea"
+                                            placeholder="Nombre de la Línea" required />
+                                    </div>
+                                    <div class="col-12 col-12-mobilep">
+                                        <span class="label label-primary"><b>Objetivo de la línea de acción
+                                                (*)</b></span>
+                                        <textarea name="objlinea" id="objlinea" cols="30" rows="5"></textarea>
+                                    </div>
+                                    <div class="col-12 col-12-mobilep">
+                                        <button type="submit" id="enviarlinea"
+                                            class="button special icon fa-search  btn-block btn-">Crear Línea Nueva
+                                        </button>
+                                    </div>
+                                </div>
+                                <br>
+                                <hr />
+                            </form>
+                        </div>
+                        <div class="col-12 col-12-mobilep">
+                            <form action="/lineas/QueryResult" method="GET">
+                                <div class="row gtr-uniform gtr-50">
+                                    <div class="col-8 col-12-mobilep">
+                                        <header>
+                                            <h3>Líneas Operativas</h3>
+                                            <p>Listados de todos las líneas del plan operativo del PEEP.</p>
+                                        </header>
+                                    </div>
+                                    <div class="col-4 col-12-mobilep">
+                                        <button type="submit" id="queryHistoryLinea"
+                                            class="button  btn-info special icon fa-search  btn-block btn-">Consultar
+                                            Líneas
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row gtr-uniform gtr-50">
+                                <div class="col-12 col-12-mobilep" style="overflow-x: auto">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Línea</th>
+                                                <th scope="col">Nombre de la Línea</th>
+                                                <th scope="col">Objetivo de la Línea</th>
+                                                <th scope="col">Borrar Línea</th>
+                                                <th scope="col">Editar Línea</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="resultados">
+                                            <%if (consultas.length){%>
+                                            <% let tam=0; %>
+                                            <% tam= consultas[0].rows.length; %>
+                                            <h3>Total: <%=tam %></h3>
+
+                                            <% for( var i=0; i< tam; i++){ %>
+                                            <tr>
+                                                <td><%=consultas[0].rows[i].idlinea %></td>
+                                                <td><%=consultas[0].rows[i].nombrelinea %></td>
+                                                <td><%=consultas[0].rows[i].objetivolinea %></td>
+                                                <td>
+                                                    <form action="/lineas/delete/<%=consultas[0].rows[i].idlinea %>"
+                                                        method="POST">
+                                                        <button class="btn  btn-danger" type="submit">Borrar</button>
+
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="/lineas/update/<%=consultas[0].rows[i].idlinea %>"
+                                                        method="POST">
+                                                        <button class="btn  btn-success" type="submit">Editar</button>
+
+                                                    </form>
+                                                </td>
+                                            </tr>
+
+                                            <%  }  consultas=[];%>
+                                            <%}else{%> <p>No has reportado requerimientos</p><%}%>
+                                           </tbody>
+                                        </table>
+                                    
+                                          
+                                 </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+            
+                            
+                </section>
+            </div>
+        </div>
+    </div>   
+        </div>
+    
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+           
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+          
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+
+            <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+
+   
+            <% include ../partials/scriptsCall.html %>
+</body>
+</html>
